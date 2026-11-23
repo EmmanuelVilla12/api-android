@@ -1,0 +1,23 @@
+services:
+  - type: web
+    name: finanzas-g7-api
+    runtime: docker
+    dockerfilePath: ./Dockerfile
+    dockerContext: .
+    plan: free
+    region: oregon
+    healthCheckPath: /
+    autoDeploy: true
+    envVars:
+      - key: SUPABASE_URL
+        sync: false
+      - key: SUPABASE_SERVICE_ROLE_KEY
+        sync: false
+      - key: JWT_SECRET
+        generateValue: true
+      - key: JWT_EXPIRA_EN
+        value: 7d
+      - key: ZONA_HORARIA
+        value: America/Bogota
+      - key: CORS_ORIGEN
+        value: ""
